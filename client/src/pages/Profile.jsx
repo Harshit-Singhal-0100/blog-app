@@ -92,101 +92,113 @@ const Profile = () => {
 
     if (loading) return <Loading />
     return (
-        <Card className="max-w-screen-md mx-auto ">
-
-            <CardContent>
-                <div className='flex justify-center items-center mt-10' >
-
+        <Card className="max-w-screen-md mx-auto shadow-lg rounded-xl border border-gray-200">
+            <CardContent className="p-6">
+                <div className="flex justify-center items-center mt-10">
                     <Dropzone onDrop={acceptedFiles => handleFileSelection(acceptedFiles)}>
                         {({ getRootProps, getInputProps }) => (
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                <Avatar className="w-28 h-28 relative group">
-                                    <AvatarImage src={filePreview ? filePreview : userData?.user?.avatar} />
-                                    <div className='absolute z-50 w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 justify-center items-center bg-black bg-opacity-20 border-2 border-violet-500 rounded-full group-hover:flex hidden cursor-pointer'>
-                                        <IoCameraOutline color='#7c3aed' />
+                                <Avatar className="w-28 h-28 relative group border-2 border-violet-200 hover:border-violet-400 transition-all duration-300">
+                                    <AvatarImage src={filePreview ? filePreview : userData?.user?.avatar} className="object-cover" />
+                                    <div className="absolute z-50 w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 justify-center items-center bg-black bg-opacity-30 border-2 border-violet-500 rounded-full group-hover:flex hidden cursor-pointer transition-opacity duration-200">
+                                        <IoCameraOutline color="#7c3aed" size={32} />
                                     </div>
                                 </Avatar>
                             </div>
                         )}
                     </Dropzone>
-
-
                 </div>
-                <div>
+                <div className="mt-8">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)}  >
-                            <div className='mb-3'>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                            <div className="mb-3">
                                 <FormField
                                     control={form.control}
                                     name="name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Name</FormLabel>
+                                            <FormLabel className="text-gray-700 font-semibold">Name</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Enter your name" {...field} />
+                                                <Input 
+                                                    placeholder="Enter your name" 
+                                                    {...field} 
+                                                    className="border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 rounded-md transition-all duration-200"
+                                                />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-red-500 text-sm mt-1" />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='mb-3'>
+                            <div className="mb-3">
                                 <FormField
                                     control={form.control}
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Email</FormLabel>
+                                            <FormLabel className="text-gray-700 font-semibold">Email</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Enter your email address" {...field} />
+                                                <Input 
+                                                    placeholder="Enter your email address" 
+                                                    {...field} 
+                                                    className="border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 rounded-md transition-all duration-200"
+                                                />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-red-500 text-sm mt-1" />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='mb-3'>
+                            <div className="mb-3">
                                 <FormField
                                     control={form.control}
                                     name="bio"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Bio</FormLabel>
+                                            <FormLabel className="text-gray-700 font-semibold">Bio</FormLabel>
                                             <FormControl>
-
-                                                <Textarea type="password" placeholder="Enter bio" {...field} />
+                                                <Textarea 
+                                                    placeholder="Enter bio" 
+                                                    {...field} 
+                                                    className="border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 rounded-md resize-none h-24 transition-all duration-200"
+                                                />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-red-500 text-sm mt-1" />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className='mb-3'>
+                            <div className="mb-3">
                                 <FormField
                                     control={form.control}
                                     name="password"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Password</FormLabel>
+                                            <FormLabel className="text-gray-700 font-semibold">Password</FormLabel>
                                             <FormControl>
-                                                <Input type="password" placeholder="Enter your password" {...field} />
+                                                <Input 
+                                                    type="password" 
+                                                    placeholder="Enter your password" 
+                                                    {...field} 
+                                                    className="border-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 rounded-md transition-all duration-200"
+                                                />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-red-500 text-sm mt-1" />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-
-                            <Button type="submit" className="w-full">Save Changes</Button>
+                            <Button 
+                                type="submit" 
+                                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 rounded-md transition-all duration-200 shadow-md"
+                            >
+                                Save Changes
+                            </Button>
                         </form>
                     </Form>
-
                 </div>
-
             </CardContent>
-
-
         </Card>
     )
 }

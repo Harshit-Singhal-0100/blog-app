@@ -5,7 +5,9 @@ export const onlyadmin = async (req, res, next) => {
         if (!token) {
             return next(403, 'Unathorized')
         }
+        
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET)
+        console.log(decodeToken)
         if (decodeToken.role === 'admin') {
             req.user = decodeToken
             next()
